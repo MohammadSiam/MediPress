@@ -1,0 +1,27 @@
+.footer-main{
+    background-color: #ECEEEF;
+}
+.footer-content{
+    margin-top: 100px;
+}
+.footer{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-bottom: 60px;    
+    padding-top: 30px;
+    text-align: center;
+}
+.footer-about{
+    margin-top: 30px;
+    text-align: left;
+    margin-right: 30px;    
+}
+.footer-links{
+    margin-top: 30px;
+    text-align: center;
+}
+.footer-contact{
+    margin-top: 30px;
+    text-align: end;
+    
+}

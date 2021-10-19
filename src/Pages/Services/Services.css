@@ -1,0 +1,15 @@
+.services-container{
+    margin-top: 60px;
+    display: flex;
+    
+}
+.left-service{
+    margin-right: 140px;
+}
+.cards{
+    display: flex;  
+    text-align: center; 
+}
+.card-content{
+    padding: 10px;
+}

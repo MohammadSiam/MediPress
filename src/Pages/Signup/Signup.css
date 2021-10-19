@@ -1,0 +1,10 @@
+.account-content{
+    margin-top: 60px;
+    height: 300px;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+.signin-btn{
+    width: 100%;
+}

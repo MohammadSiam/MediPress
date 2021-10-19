@@ -1,0 +1,11 @@
+.links{
+    justify-content: center;
+    align-items: center;
+}
+.login-photo{
+    border-radius: 50%;
+    margin-left: 15px;
+    height: 40%;
+    width: 40%;
+    border: 1px solid black;
+}
