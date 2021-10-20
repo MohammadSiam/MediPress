@@ -1,11 +1,10 @@
 const firebaseConfig = {
 
-    apiKey: "AIzaSyAEBZPab2ucCV-5AiQBJaQaDts8_mQDXlo",  
-    authDomain: "medipress-54570.firebaseapp.com",  
-    projectId: "medipress-54570",  
-    storageBucket: "medipress-54570.appspot.com",  
-    messagingSenderId: "420786962508",  
-    appId: "1:420786962508:web:a7611fceed8d03bb4b74e9"  
-  };
-  export default firebaseConfig;
-  
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
+};
+export default firebaseConfig;
