@@ -1,36 +1,46 @@
 import React from 'react';
 import './Login.css'
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link,useLocation,useHistory } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const {signInUsingGoogle,handleRegistration,isLogin}=useAuth();
-    const location= useLocation();
-    const history=useHistory();
-    const redirect_uri=location.state?.from || '/home';
+    const { signInUsingGoogle, handleLogin,handleLoginPasswordChange,handleLoginEmailChange,error } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location.state?.from || '/home';
 
-    const handleGoogleLogin=()=>{
+    const handleGoogleLogin = () => {
         signInUsingGoogle()
-        .then(resutl=>{
-            history.push(redirect_uri)
-        })
+            .then(result => {
+                history.push(redirect_uri)
+            })
     }
+    // const handleEmailPasswordLogin = () => {
+    //     handleLogin()
+    //         .then(result => {
+    //             history.push(redirect_uri)
+    //         })
+    //         .catch(error => {
+    //             const errormessage = error.message;
+    //         })
+    // }
     return (
         <div>
             <Container className="login-content">
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" placeholder="Enter email"  onBlur={handleLoginEmailChange}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" onBlur={handleLoginPasswordChange}/>
                     </Form.Group>
+                    {error.message}
 
-                    <Button variant="success" type="submit" onClick={isLogin}>
+                    <Button variant="success" type="submit" onClick={handleLogin}>
                         Sign in
                     </Button>
                     <span> Or</span>

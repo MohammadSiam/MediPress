@@ -7,13 +7,15 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
     const [error, setError] = useState('')
 
     const auth = getAuth();
 
     const signInUsingGoogle = () => {
         const googleProvider = new GoogleAuthProvider();
-        
+
         return signInWithPopup(auth, googleProvider);
 
     }
@@ -67,14 +69,37 @@ const useFirebase = () => {
             })
     }
 
+    const handleLogin = e => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+            .then(result => {
+                const user = result.user;
+                setError('')
+            })
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message)
+            })
+
+    }
+
 
 
     const handleEmailChange = e => {
         setEmail(e.target.value);
     }
 
+    const handleLoginEmailChange = e => {
+        setLoginEmail(e.target.value)
+        
+    }
+
     const handlePasswordChange = e => {
         setPassword(e.target.value);
+    }
+
+    const handleLoginPasswordChange = e => {
+        setLoginPassword(e.target.value)
     }
 
     useEffect(() => {
@@ -102,8 +127,11 @@ const useFirebase = () => {
         // isLogin,
         // loggedIn,
         handlePasswordChange,
+        handleLoginPasswordChange,
         handleEmailChange,
+        handleLoginEmailChange,
         handleRegistration,
+        handleLogin,
         email,
         password,
         signInUsingGoogle,
