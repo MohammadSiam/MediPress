@@ -5,7 +5,7 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { signInUsingGoogle, handleLogin,handleLoginPasswordChange,handleLoginEmailChange,error } = useAuth();
+    const { signInUsingGoogle, handleLogin,handleLoginPasswordChange,handleLoginEmailChange,setLoginError } = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_uri = location.state?.from || '/home';
@@ -38,7 +38,7 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" onBlur={handleLoginPasswordChange}/>
                     </Form.Group>
-                    {error.message}
+                    <div className="text-danger">{setLoginError}</div>
 
                     <Button variant="success" type="submit" onClick={handleLogin}>
                         Sign in

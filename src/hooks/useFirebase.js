@@ -10,6 +10,7 @@ const useFirebase = () => {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [error, setError] = useState('')
+    const [loginError,setLoginError]=useState('')
 
     const auth = getAuth();
 
@@ -74,11 +75,11 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, loginEmail, loginPassword)
             .then(result => {
                 const user = result.user;
-                setError('')
+                setLoginError('')
             })
             .catch(error => {
                 console.log(error.message);
-                setError(error.message)
+                setLoginError(error.message)
             })
 
     }
@@ -124,6 +125,7 @@ const useFirebase = () => {
     return {
         user,
         error,
+        setLoginError,
         // isLogin,
         // loggedIn,
         handlePasswordChange,
